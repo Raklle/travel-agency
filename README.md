@@ -1,4 +1,11 @@
-# Wycieczki
+Project created as part of the Introduction to Web Applications course during the 3rd semester of studies in the field of computer science.
+
+## Technologies Used
+- HTML
+- CSS
+- TypeScript
+- Angular
+- Firebase
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.
 
