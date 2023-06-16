@@ -1,0 +1,49 @@
+
+
+<nav>
+  <div class="btn-container">
+    <a routerLink="/"><div class="logo" (click)="log()">
+      <span class="wide"><h1>BIURO PODRÓŻY "WYJAZD"</h1></span>
+      <span class="thin"><i class="fa-solid fa-house"></i></span> 
+    </div></a>
+    <a routerLink="/tours" ><div class="nav-btn" routerLinkActive="active-link">
+      <span class="wide">Lista wycieczek</span> 
+      <span class="thin"><i class="fa-solid fa-table-list"></i></span> 
+    </div></a>
+    <a routerLink="/cart"><div class="nav-btn" routerLinkActive="active-link">
+      <span class="wide">Koszyk</span>
+      <span class="thin"><i class="fa-solid fa-basket-shopping"></i></span> 
+    </div></a>
+    <a routerLink="/add-tour"><div class="nav-btn" *ngIf="auth.user.admin == true || auth.user.manager == true" routerLinkActive="active-link">
+      <span class="wide">Dodaj wycieczkę</span>
+      <span class="thin"><i class="fa-regular fa-calendar-plus"></i></span> 
+    </div></a>
+    <a routerLink="/admin"><div class="nav-btn" *ngIf="auth.user.admin == true" routerLinkActive="active-link">
+      <span class="wide">Użytkownicy</span>
+      <span class="thin"><i class="fa-solid fa-users"></i></span> 
+    </div></a>
+  </div>
+      
+
+  <div class="btn-container">
+    <mat-button-toggle-group name="fontStyle">
+      <mat-button-toggle (change)="setCurrency('zloty')">zł <br></mat-button-toggle>
+      <mat-button-toggle (change)="setCurrency('dolar')">$<br></mat-button-toggle>
+      <mat-button-toggle (change)="setCurrency('pound')">£<br></mat-button-toggle>
+    </mat-button-toggle-group>
+    
+    <div class="cart-number"><a routerLink="/cart"><i class="fa-solid fa-cart-shopping"></i>: {{reserved}}</a></div>
+    <a routerLink="/history" ><div *ngIf="auth.user.client == true" class="nav-btn" routerLinkActive="active-link">Historia zakupów</div></a>
+    <a routerLink="/signup" ><div *ngIf="auth.user.client == false" class="nav-btn" routerLinkActive="active-link">Rejestracja</div></a>
+    <a routerLink="/login" ><div  *ngIf="auth.user.client == false" class="nav-btn" routerLinkActive="active-link">Zaloguj się</div></a>
+    <div *ngIf="auth.user.client == true" class="nav-btn" (click)="auth.logout()">Wyloguj się</div>
+    <div class="user-profile" *ngIf="auth.user.client == true">
+      <span><i class="fa-regular fa-circle-user"></i></span>
+      <span>{{ " " +  auth.user.username | titlecase}}</span></div>
+
+  </div>
+
+    </nav>
+
+
+

@@ -1,0 +1,50 @@
+<div class="bg"></div>
+
+
+<main>
+  <div class="form-container">
+  <form [formGroup]="modelForm" (ngSubmit)="onSubmit(modelForm)">
+
+      <div class="form-field">
+      <label>Nazwa:</label><input class="single-line" name="name" formControlName="name">
+      </div>
+      <div class="form-field">
+      <label>Kraj:</label><input class="single-line" name="destination" formControlName="destination">
+    </div>
+    <div class="single-line">
+      <div class="form-field">
+    <label>Data rozpoczęcia:</label><input name="startDate" type="date" formControlName="startDate">
+      </div>
+      <div class="form-field">
+    <label>Data zakończenia:</label><input name="endDate" type="date" formControlName="endDate">
+      </div>
+
+    </div>
+    <div class="single-line">
+      <div class="form-field">
+    <label>Cena:</label><input name="price" type="number" min="0" formControlName="price">
+      </div>
+      <div class="form-field">
+    <label>Ilość miejsc:</label><input name="capacity" type="number" min="1" formControlName="capacity">
+      </div>
+      
+    </div>
+    <div class="form-field">
+    <label>Opis:</label><textarea name="about" formControlName="about"></textarea>
+    </div>
+    
+  
+    <select name="image" formControlName="image">
+      <option value="">--Please choose an option--</option>
+      <option value="image1.png">image1</option>
+      <option value="image2.png">image2</option>
+      <option value="image3.png">image3</option>
+      <option value="image4.png">image4</option>
+  </select>
+
+
+    <button type="submit" [disabled]="!modelForm.valid" mat-raised-button color="primary">Send</button>
+  </form>
+
+  </div>
+</main>

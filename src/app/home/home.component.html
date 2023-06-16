@@ -1,0 +1,43 @@
+<div class="bg"></div>
+<main>
+  <div class="container">
+    <div class="aboutUs tekst"><p>BIURO PODRÓŻY "WYJAZD"</p><h1>Tylko u nas czekają cię niezapomniane wycieczki, <br> sprawdź sam!</h1></div>
+      <div>
+
+      </div>
+    <div class="ind">
+      <swiper
+      [spaceBetween]="30"
+      [centeredSlides]="true"
+      [autoplay]="{
+        delay: 2500,
+        pauseOnMouseEnter: true
+      }"
+      [pagination]="{
+        clickable: true
+      }"
+      [loop]="true"
+      [navigation]="true"
+    >
+      <ng-template swiperSlide><div class="slide"><img src="/assets/slide1.png" alt=""></div></ng-template>
+      <ng-template swiperSlide><div class="slide"><img src="/assets/slide2.png" alt=""></div></ng-template>
+      <ng-template swiperSlide><div class="slide"><img src="/assets/slide3.png" alt=""></div></ng-template>
+      <ng-template swiperSlide><div class="slide"><img src="/assets/slide4.png" alt=""></div></ng-template>
+
+    </swiper>
+    </div>
+
+
+    <div class="contact tekst"> <p> Kontakt: </p><h1> e-mail: wycieczki@super.pl <br> Telefon: 123 123 123 <br> Adres: Kraków ul.Nawojki 20</h1></div>
+
+    <div class="map">
+        <iframe scrolling="no" marginheight="0" marginwidth="0" id="gmap_canvas" src="https://maps.google.com/maps?width=500&amp;height=400&amp;hl=en&amp;q=Czarnowiejska%20Krak%C3%B3w+(Krak%C3%B3)&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" width="600" height="400" frameborder="0"></iframe><a href='https://maps-generator.com/'></a>
+    </div>
+
+
+
+  </div>
+
+
+</main>
+

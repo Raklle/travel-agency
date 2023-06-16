@@ -1,0 +1,32 @@
+<mat-card [ngStyle]="{'background': tourStatus, 'box-shadow' : highlight}">
+    <button mat-mini-fab color="primary" id="delete" (click)="deleteThis()"><i class="fa-solid fa-trash-can"></i></button>
+    <div class="card-header">
+    <div class="tour-image">  <a routerLink="/tours/{{tour.id}}" ><img src={{imgPath}}></a></div>
+    <div class="tour-description">
+        <h1>{{tour.name | uppercase}}</h1>
+        <h4>{{tour.destination| uppercase}}</h4>
+        <div class="star">
+        <app-rating-display [rating]="average"></app-rating-display>
+        <div class="numberofcomments">({{comments.length}})</div>
+        
+        </div>
+        <p>{{tour.about}}</p>
+    </div>
+    </div>
+    <div class="divider"></div>
+    <div class="tour-details">
+        <h2>Termin wycieczki:</h2>
+        <h3>{{tour.startDate}} - {{tour.endDate}}</h3>
+        <h4>Cena wycieczki: {{ cartService.getPrice(tour.price)}}</h4>
+        <h1 *ngIf="tour.avalible- counter > 3">ZAREZERWUJ JUŻ TERAZ!!</h1>
+        <h1 *ngIf="tour.avalible- counter <= 3 && tour.avalible- counter > 0">OSTATNIE MIEJSCA!!</h1>
+        <h1 *ngIf="tour.avalible- counter == 0">Koniec miejsc :(</h1>
+        <div class="btn-container">
+            <button mat-button class="add-remove" (click)="buyTour()" [disabled]="tour.avalible- reserved <= 0"><h1>+</h1></button>
+            <div id="counter"> Miejsca: {{ tour.avalible- reserved}}</div>
+            <button mat-button class="add-remove" (click)="returnTour()" [disabled]="reserved <= 0"><h1>-</h1></button>
+            <p *ngIf="reserved > 0">Dodano {{reserved}} do koszyka</p>
+        </div>
+    </div>
+  </mat-card>
+

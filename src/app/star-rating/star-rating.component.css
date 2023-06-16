@@ -1,0 +1,37 @@
+.rating
+{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 155px;
+}
+
+
+.rating input
+{
+position: relative;
+width: 30px;
+height: 30px;
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+appearance: none;
+}
+
+.rating input::before
+{
+content: '\f005';
+position: absolute;
+font-family: fontAwesome;
+font-size: 24px;
+color: rgb(87, 87, 87);
+transition: 0.5s;
+}
+
+.rating input:hover::before,
+.rating input:hover ~ input::before,
+.rating input:checked ~ input::before,
+.rating input:checked::before
+{
+    color: gold;
+}

@@ -1,0 +1,11 @@
+
+nav{
+    position:fixed;
+    top:0;
+    z-index :1;
+}
+
+.container{
+    margin-top: 64px;
+    height: 100%;
+}

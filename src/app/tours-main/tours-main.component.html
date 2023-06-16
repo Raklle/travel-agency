@@ -1,0 +1,57 @@
+<div class="bg"></div>
+
+<div class="main">
+
+<div class="sidebar">
+    <div class="price">
+        <h2>Cena:</h2>
+    <p>Max:</p>
+    <input type="range" name="minPrice" id="minPrice"  [(ngModel)]="activeFilters.maxPrice" min='{{activeFilters.minPrice}}' max="20000" (change)="updateFilters()">
+    <p>Min:</p>
+    <input type="range" name="minPrice" id="minPrice"  [(ngModel)]="activeFilters.minPrice" min="0" max="{{activeFilters.maxPrice}}" (change)="updateFilters()">
+
+    <p *ngIf="activeFilters.minPrice != 0 || activeFilters.maxPrice != 0">Od {{activeFilters.minPrice}}zł do {{activeFilters.maxPrice}}zł</p> 
+    </div>
+    <div class="destination">
+        <h2>Lokalizacja:</h2>
+        <mat-form-field appearance="fill">
+        <mat-select [(value)]="filteredDestinations" (selectionChange)="updateFilters()" multiple>
+            <mat-select-trigger>
+            {{filteredDestinations[0] || ''}}
+            <span *ngIf="(filteredDestinations?.length || 0) > 1">
+                (+{{(filteredDestinations.length || 0) - 1}})
+            </span>
+            </mat-select-trigger>
+            <mat-option *ngFor="let topping of destinationsList" [value]="topping">{{topping}}</mat-option>
+        </mat-select>
+        </mat-form-field>
+
+    </div>
+    <div class="rating">
+        <h2>Ocena:</h2>
+
+        <p>Max:</p>
+        <input type="range" name="maxRating" id="maxRating"  [(ngModel)]="activeFilters.maxRating" min='{{activeFilters.minRating}}' max="5" (change)="updateFilters()">
+        <p>Min:</p>
+        <input type="range" name="minRating" id="minRating"  [(ngModel)]="activeFilters.minRating" min="0" max="{{activeFilters.maxRating}}" (change)="updateFilters()">
+        <p>Od {{activeFilters.minRating}} do {{activeFilters.maxRating}}</p>
+    </div>
+    <div class="date">
+        <h2>Data:</h2>
+        <input type="date" name="date" id="date"  [(ngModel)]="activeFilters.date" (change)="updateFilters()">
+    </div>
+    <button mat-raised-button color="primary" (click)="resetFilters()">Reset</button>
+    <div class="button"></div>
+
+
+</div>
+
+<div class="tour-cards-container">
+    <app-tour-card (emitStatus)="updateFromChild($event)" *ngFor="let tourr of toursCopy"  [tour]="tourr.tour" [highlight]='tourr.highlight' ></app-tour-card>
+</div>
+
+</div>
+
+
+
+

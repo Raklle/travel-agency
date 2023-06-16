@@ -1,0 +1,19 @@
+.rating
+{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 113px;
+    font-size: 20px;
+    color: gray;
+    overflow: hidden;
+}
+
+.gold{
+    color:gold;
+    /* position: absolute; */
+}
+.star{
+    position: relative;
+}
+
+

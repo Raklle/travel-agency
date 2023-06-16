@@ -1,0 +1,93 @@
+<div class="bg"></div>
+
+<main>
+
+
+
+
+  <div class="container">
+
+  <div class="left-container">
+    <h1 class="title">{{tour.name}}</h1>
+    <h2 class="title">{{tour.destination}}</h2> 
+    <h3 class="title">{{tour.startDate}} - {{tour.endDate}}</h3>
+      <swiper
+      [spaceBetween]="30"
+      [centeredSlides]="true"
+      [autoplay]="{
+        delay: 2500,
+        disableOnInteraction: false
+      }"
+      [pagination]="{
+        clickable: true
+      }"
+      [loop]="true"
+      [navigation]="true"
+    >
+      <ng-template swiperSlide><div class="slide"><img src="/assets/slide1.png" alt=""></div></ng-template>
+      <ng-template swiperSlide><div class="slide"><img src="/assets/slide2.png" alt=""></div></ng-template>
+      <ng-template swiperSlide><div class="slide"><img src="/assets/slide3.png" alt=""></div></ng-template>
+      <ng-template swiperSlide><div class="slide"><img src="/assets/slide4.png" alt=""></div></ng-template>
+
+    </swiper>
+    <br>
+    <div class="rating">
+      <app-rating-display [rating]="average"></app-rating-display> ({{comments.length}} ocen) 
+    </div>
+  
+    <div class="opis">{{tour.about}}</div>
+
+
+  </div>
+  <div class="right-container">
+    <a routerLink="/tours"><div class="btn" routerLinkActive="active-link">Powrót</div></a>
+    <h1>{{cartService.getPrice(tour.price)}}</h1>
+    
+    <div class="btn-container">
+      <button mat-button class="add-remove" (click)="buyTour()" [disabled]="tour.avalible- reserved <= 0"><h1>+</h1></button>
+      <div id="counter"> Miejsca: {{ tour.avalible- reserved}}</div>
+      <button mat-button class="add-remove" (click)="returnTour()" [disabled]="reserved <= 0"><h1>-</h1></button>
+      <p *ngIf="reserved > 0">Dodano {{reserved}} do koszyka</p>
+    </div>
+
+
+
+    <div class="form">
+
+      <form *ngIf="validForComment">
+        <app-star-rating (newItemEvent)="updateRating($event)"></app-star-rating>
+        <div class="form-field">
+          <textarea placeholder="Zostaw komentarz" name="message" [(ngModel)]="message" (input)="updateText()"></textarea>
+        </div>
+        
+        <button type="submit" [disabled]="!valid" mat-raised-button color="primary" (click)="onSubmit()">Send</button>
+        <br>
+        <span class="error">{{error}}</span>
+      </form>
+      <div class="nocomment" *ngIf="!validForComment && !auth.user.banned && finished == true" >Kup wycieczkę, aby móc zostawić komentarz</div>
+      <div class="nocomment" *ngIf="auth.user.banned && finished == true" >Nie masz możliwości komentowania, skontaktuj się z administratorem</div>
+      <div class="nocomment" *ngIf="finished == false" >Do zakończenia wycieczki nie można zostawiać komentarzy</div>
+    </div>
+    <div class="comments-container">
+      <!-- <app-comment *ngFor="let comment of comments"></app-comment> -->
+      <div class="comments" *ngFor="let comment of comments">
+        <span class="name">{{comment.name}}</span>
+        <span class="rating"><app-rating-display [rating]="comment.rating"></app-rating-display></span>
+        <span class="comment">{{comment.comment}}</span>
+      </div>
+      <!-- <div class="comments">
+        <span class="name">Kurczak</span>
+        <span class="rating"><app-rating-display [rating]="3"></app-rating-display></span>
+        <span class="comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum saepe ut autem ipsa similique consequuntur sed voluptatibus obcaecati magni, exercitationem nulla labore? Unde odit amet harum, illo culpa aut ex!</span>
+      </div> -->
+    </div>
+
+  
+  </div>
+
+  </div>
+
+
+</main>
+
+
